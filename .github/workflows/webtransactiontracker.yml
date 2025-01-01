@@ -73,7 +73,7 @@ jobs:
     - name: Install dependencies
       run: |
         cd webtransactiontracker
-        npm install
+        npm install --legacy-peer-deps
 
     - name: Run tests with coverage
       run: |

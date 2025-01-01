@@ -75,7 +75,7 @@ jobs:
     - name: Install dependencies  # Namestitev odvisnosti
       run: |
         cd backend
-        npm install
+        npm install --legacy-peer-deps
       # ⚠️ Cache hit:
       # - Če je cache hit, npm install preveri obstoječe odvisnosti in ne namešča ničesar dodatnega.
       # - Če je cache miss, npm install ponovno ustvari mapo node_modules.

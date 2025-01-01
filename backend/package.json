@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "test": "jest",
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "test:ci": "jest --ci --coverage"
   },
   "author": "",
   "license": "ISC",

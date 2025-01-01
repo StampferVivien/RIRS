@@ -1,0 +1,89 @@
+name: webtransactiontracker CI/CD
+
+on:
+  push:
+    branches:
+      - main
+      - production
+  pull_request:
+    branches:
+      - main
+      - production
+
+jobs:
+  # Gradnja frontenda
+  build-webtransactiontracker:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 20
+
+    - name: Cache node_modules
+      uses: actions/cache@v3
+      with:
+        path: webtransactiontracker/node_modules
+        key: ${{ runner.os }}-webtransactiontracker-${{ hashFiles('webtransactiontracker/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-webtransactiontracker-
+
+    - name: Install dependencies
+      run: |
+        cd webtransactiontracker
+        npm ci
+
+    - name: Build application
+      run: |
+        cd webtransactiontracker
+        npm run build
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: webtransactiontracker-build
+        path: webtransactiontracker/build/
+
+  # Testiranje frontenda
+  test-webtransactiontracker:
+    needs: build-webtransactiontracker
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 20
+
+    - name: Cache node_modules
+      uses: actions/cache@v3
+      with:
+        path: webtransactiontracker/node_modules
+        key: ${{ runner.os }}-webtransactiontracker-${{ hashFiles('webtransactiontracker/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-webtransactiontracker-
+
+    - name: Install dependencies
+      run: |
+        cd webtransactiontracker
+        npm install
+
+    - name: Run tests with coverage
+      run: |
+        cd webtransactiontracker
+        npm run test:ci
+
+    - name: Upload coverage report
+      uses: actions/upload-artifact@v4
+      with:
+        name: webtransactiontracker-coverage
+        path: webtransactiontracker/coverage/
+
+  

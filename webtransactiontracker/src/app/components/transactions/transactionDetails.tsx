@@ -2,7 +2,7 @@ import React from "react";
 import { ITransaction } from "../../../interfaces/ITransactions";
 import { SlTrash, SlPencil } from "react-icons/sl";
 import { redirect } from "next/navigation";
-import { baseURL } from "../../../../global";
+import { baseURL } from "../../../../../global";
 
 interface TransactionDetailsProps {
     transaction: ITransaction;

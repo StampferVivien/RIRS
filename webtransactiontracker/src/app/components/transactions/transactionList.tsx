@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { ITransaction } from "../../../interfaces/ITransactions";
 import { SlArrowDownCircle, SlArrowUpCircle, SlInfo } from "react-icons/sl";
-import { baseURL } from "./../../../../../global";
+import { baseURL } from "../../../../global";
 import TransactionDetails from "./transactionDetails";
 
 export default function TransactionList() {

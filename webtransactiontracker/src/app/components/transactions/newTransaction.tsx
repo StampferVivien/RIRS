@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { ITransaction, initialTransaction } from "../../../interfaces/ITransactions";
-import { baseURL } from "../../../global";
 import { redirect } from "next/navigation";
 
 export default function NewTransaction() {
@@ -23,7 +22,7 @@ export default function NewTransaction() {
             return;
         }
         try {
-            const response = await fetch(`${baseURL}/transaction/newTransaction`, {
+            const response = await fetch(`http://192.168.1.150:3000/transaction/newTransaction`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -2,7 +2,7 @@ import React from "react";
 import { ITransaction } from "../../../interfaces/ITransactions";
 import { SlTrash, SlPencil } from "react-icons/sl";
 import { redirect } from "next/navigation";
-import { baseURL } from "../../../global";
+
 
 interface TransactionDetailsProps {
     transaction: ITransaction;
@@ -14,7 +14,7 @@ const TransactionDetails: React.FC<TransactionDetailsProps> = ({ transaction }) 
 
     const handleDelete = async() => {
         try {
-            const response = await fetch(`${baseURL}/transaction/deleteTransaction/${transaction._id}`, {
+            const response = await fetch(`http://192.168.1.150:3000/transaction/deleteTransaction/${transaction._id}`, {
                 method: 'Delete',
             });
 
@@ -36,7 +36,7 @@ const TransactionDetails: React.FC<TransactionDetailsProps> = ({ transaction }) 
 
     const handleSave = async() => {
         try {
-            const response = await fetch(`${baseURL}/transaction/editTransaction/${transaction._id}`, {
+            const response = await fetch(`http://192.168.1.150:3000/transaction/editTransaction/${transaction._id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

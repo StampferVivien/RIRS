@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import { ITransaction } from "../../../interfaces/ITransactions";
 import { SlArrowDownCircle, SlArrowUpCircle, SlInfo } from "react-icons/sl";
-import { baseURL } from "../../../global";
 import TransactionDetails from "./transactionDetails";
 
 export default function TransactionList() {
@@ -19,7 +18,7 @@ export default function TransactionList() {
 
     const fetchTransactions = async () => {
         try {
-            const response = await fetch(`${baseURL}/transaction/getTransactions`);
+            const response = await fetch(`http://192.168.1.150:3000/transaction/getTransactions`);
             if (response.ok) {
                 const data = await response.json();
                 setTransactions(data.reverse());

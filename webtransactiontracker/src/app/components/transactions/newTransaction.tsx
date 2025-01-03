@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { ITransaction, initialTransaction } from "../../../interfaces/ITransactions";
-import { baseURL } from "../../../../../global";
+import { baseURL } from "./../../../../../global";
 import { redirect } from "next/navigation";
 
 export default function NewTransaction() {

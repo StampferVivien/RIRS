@@ -113,7 +113,7 @@ jobs:
     - name: Install dependencies
       run: |
         cd webtransactiontracker
-        npm ci
+        npm install --legacy-peer-deps
 
     - name: Collect coverage (React-specific)
       run: |

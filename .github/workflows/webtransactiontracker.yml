@@ -86,8 +86,8 @@ jobs:
         name: webtransactiontracker-coverage
         path: webtransactiontracker/coverage/
 
-        #sonarcloud
-    sonarcloud-analysis:
+        #sonarcloud job
+  sonarcloud-analysis:
     needs: test-webtransactiontracker  
     runs-on: ubuntu-latest
     environment:

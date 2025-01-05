@@ -19,7 +19,7 @@ router.post('/newTransaction', async (req, res) => {
         const newTransaction = new Transaction(req.body);
         await newTransaction.save();
         console.log('new transaction saved');
-        res.status(200).send('new transaction saved');
+        res.status(200).send('new transaction savedD');
     } catch(err) {
         console.error(err);
         res.status(400).send({error: err });
